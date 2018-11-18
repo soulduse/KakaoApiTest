@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.lezhin.test"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+    lintOptions {
+        check 'Interoperability'
+    }
+}
+
+dependencies {
+    def lifecycle_version = "1.1.1"
+    def paging_version = "1.0.1"
+    def room_version = "1.1.1"
+    def anko_version = '0.10.6'
+    def koin_version = "1.0.0"
+    def photo_view_version = "2.1.4"
+    def gson_version = "2.8.2"
+    def fresco_version = "1.11.0"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    // 제가 만든 Library 사용했습니다.(Retrofit2 + OKHttp3 + Kotlin Coroutines)
+    // github : https://github.com/soulduse/android-network-lib
+    implementation 'com.dave.network:network-release:1.0.2'
+
+    // Koin
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // 이미지 확대/축소 라이브러리
+    implementation "com.github.chrisbanes:PhotoView:$photo_view_version"
+
+    // Fresco
+    implementation "com.facebook.fresco:fresco:$fresco_version"
+
+    // Anko
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+
+    // AAC
+    implementation "android.arch.paging:runtime:$paging_version"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.koin:koin-test:1.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+}
+
+androidExtensions {
+    experimental = true
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}

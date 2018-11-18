@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+	<data>
+		<import type="android.view.View"/>
+
+		<variable
+				name="vm"
+				type="com.lezhin.test.ui.detail.DetailViewModel"/>
+	</data>
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/black">
+
+		<com.facebook.drawee.view.SimpleDraweeView
+				android:id="@+id/my_image_view"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				fresco:actualImageScaleType="fitCenter"
+				fresco:placeholderImage="@drawable/ic_image_grey_600_48dp"/>
+
+		<android.support.v7.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="?attr/actionBarSize"
+				android:background="@color/black_transparent">
+
+			<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+				<ImageView
+						android:id="@+id/toolbar_cancel"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerVertical="true"
+						android:src="@drawable/ic_clear_white_24dp"/>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="21dp"
+						android:layout_marginStart="32dp"
+						android:layout_marginTop="4dp"
+						android:layout_marginBottom="4dp"
+						android:onClick="@{()-> vm.goToLink()}"
+						android:text="@string/detail_link"
+						android:textColor="@color/sky"
+						android:textSize="16sp"
+						android:layout_toEndOf="@+id/toolbar_cancel"
+						android:gravity="center_vertical"/>
+			</RelativeLayout>
+
+
+		</android.support.v7.widget.Toolbar>
+	</RelativeLayout>
+</layout>
+
