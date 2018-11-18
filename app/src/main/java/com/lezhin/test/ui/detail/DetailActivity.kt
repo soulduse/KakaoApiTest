@@ -27,7 +27,6 @@ class DetailActivity: BaseActivity<ActivityDetailBinding, DetailViewModel>(), De
         super.onCreate(savedInstanceState)
         detailViewModel.setNavigator(this)
         activityDetailBinding = getViewDataBinding()
-        activityDetailBinding.toolbarCancel.setOnClickListener { finish() }
         showImage()
     }
 

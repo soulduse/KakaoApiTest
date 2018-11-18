@@ -73,7 +73,6 @@ dependencies {
 
     // AAC
     implementation "android.arch.paging:runtime:$paging_version"
-    implementation "android.arch.persistence.room:runtime:$room_version"
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 
     testImplementation 'junit:junit:4.12'

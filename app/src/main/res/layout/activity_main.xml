@@ -4,7 +4,9 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<data>
+
 		<import type="android.view.View"/>
+
 		<variable
 				name="vm"
 				type="com.lezhin.test.ui.main.MainViewModel"/>
@@ -32,7 +34,7 @@
 						android:layout_centerHorizontal="true"
 						android:layout_gravity="right"
 						android:iconifiedByDefault="false"
-						android:queryHint="@string/search_title" />
+						android:queryHint="@string/search_title"/>
 
 			</android.support.v7.widget.Toolbar>
 		</android.support.design.widget.AppBarLayout>
@@ -53,7 +55,18 @@
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
+					app:layout_constraintTop_toTopOf="parent"/>
+
+			<android.support.v4.widget.ContentLoadingProgressBar
+					android:id="@+id/progress_detail"
+					style="?android:attr/progressBarStyleLarge"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"/>
 
 			<android.support.v7.widget.RecyclerView
 					android:id="@+id/rv_images"

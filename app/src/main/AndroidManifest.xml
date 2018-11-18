@@ -18,9 +18,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.search.SearchActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.app.searchable"
                     android:resource="@xml/searchable" />

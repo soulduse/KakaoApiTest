@@ -22,7 +22,7 @@ class MainViewModel: BaseViewModel<MainNavigation>() {
             is NetworkState.Loading -> { showProgress() }
             is NetworkState.Success -> {
                 DLog.w("Origin Data Observer ---> ${it.item.documents}")
-                isEmptyData.set(it.item.documents.isEmpty())
+                setIsEmptyData(it.item.documents.isEmpty())
             }
             is NetworkState.Error -> {
                 hideProgress()

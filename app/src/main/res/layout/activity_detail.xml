@@ -37,6 +37,7 @@
 						android:id="@+id/toolbar_cancel"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:onClick="@{()-> vm.toolbarCancel()}"
 						android:layout_centerVertical="true"
 						android:src="@drawable/ic_clear_white_24dp"/>
 
