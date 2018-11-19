@@ -1,6 +1,5 @@
 package com.lezhin.test.ui.base
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
@@ -10,13 +9,11 @@ import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.InputMethodManager
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.lezhin.test.utils.NetworkUtils
-import org.jetbrains.anko.progressDialog
 
 abstract class BaseActivity<T: ViewDataBinding, V: BaseViewModel<*>>: AppCompatActivity() {
 
     private lateinit var mViewDataBinding: T
     private var mViewModel: V?= null
-    private var mProgressDialog: ProgressDialog?= null
 
     abstract fun getBindingVariable(): Int
 
@@ -41,21 +38,9 @@ abstract class BaseActivity<T: ViewDataBinding, V: BaseViewModel<*>>: AppCompatA
         }
     }
 
-    fun hideLoading() {
-        if(mProgressDialog != null && mProgressDialog!!.isShowing) {
-            mProgressDialog!!.cancel()
-        }
-    }
-
-    fun showLoading() {
-        hideLoading()
-        mProgressDialog = progressDialog("Loading..")
-        mProgressDialog!!.show()
-    }
-
     fun isNetworkConnected(): Boolean = NetworkUtils.isNetworkConnected(applicationContext)
 
-    fun performDataBinding() {
+    private fun performDataBinding() {
         mViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
         this.mViewModel = if(mViewModel == null) getViewModel() else mViewModel
         mViewDataBinding.setVariable(getBindingVariable(), mViewModel)
