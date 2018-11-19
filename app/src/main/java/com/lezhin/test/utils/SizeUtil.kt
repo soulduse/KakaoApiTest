@@ -7,7 +7,6 @@ import android.util.DisplayMetrics
  * Utility class for resizing
  */
 object SizeUtil {
-
     var DISPLAY_WIDTH: Int = 0
     var DISPLAY_HEIGHT: Int = 0
 
