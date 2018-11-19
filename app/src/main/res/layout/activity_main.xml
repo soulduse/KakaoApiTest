@@ -27,6 +27,14 @@
 					android:background="?attr/colorPrimary"
 					android:theme="@style/AppTheme">
 
+				<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="@string/app_name"
+						android:textSize="16sp"
+						android:textColor="@color/white"
+						android:layout_gravity="left"/>
+
 				<android.support.v7.widget.SearchView
 						android:id="@+id/searchView"
 						android:layout_width="wrap_content"
@@ -41,6 +49,7 @@
 
 		<android.support.constraint.ConstraintLayout
 				android:layout_width="match_parent"
+				app:layout_behavior="@string/appbar_scrolling_view_behavior"
 				android:layout_height="match_parent"
 				android:orientation="vertical"
 				tools:context=".ui.main.MainActivity">
