@@ -16,7 +16,9 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNavigation {
     private val mainViewModel: MainViewModel by viewModel()
+
     private val mainAdapter: MainAdapter by inject()
+
     private val searchDelayHandler: Handler = Handler()
 
     private lateinit var activityMainBinding: ActivityMainBinding
@@ -67,6 +69,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         if (keyword.isNullOrEmpty()) {
             return
         }
+
+        if (!isNetworkConnected()) {
+            toast(R.string.not_connected_notwork)
+            return
+        }
+
         mainViewModel.getLivePagedBuilder(keyword!!)
             .build()
             .observe(this, Observer { documents ->
